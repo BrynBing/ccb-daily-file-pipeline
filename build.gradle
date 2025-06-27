@@ -17,7 +17,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.ccb.dailyfilepipeline.App'
+    mainClass = 'com.ccb.daily.file.pipeline.App'
 
     // Sets the default JVM argument to enforce UTF-8 encoding for file operations.
     applicationDefaultJvmArgs = ['-Dfile.encoding=UTF-8']
@@ -35,7 +35,7 @@ java {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'com.ccb.dailyfilepipeline.App'
+                'Main-Class': 'com.ccb.daily.file.pipeline.App'
         )
     }
 }

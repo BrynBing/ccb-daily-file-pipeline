@@ -1,4 +1,4 @@
-package com.ccb.dailyfilepipeline.function.extractor;
+package com.ccb.daily.file.pipeline.function.message.ingestion;
 
 public class DateContext {
     public final String siradt;
