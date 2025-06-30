@@ -1,13 +1,40 @@
 package com.ccb.daily.file.pipeline;
 
-import com.ccb.daily.file.pipeline.function.message.ingestion.GMPSExtractor;
-
-import java.io.IOException;
+import com.ccb.daily.file.pipeline.function.message.ingestion.ReportDateContext;
+import com.ccb.daily.file.pipeline.function.message.ingestion.ReportProcessingClient;
+import com.ccb.daily.file.pipeline.utils.DateUtil;
 
 public class App {
-    public static void main(String[] args) throws IOException {
-
+    public static void main(String[] args) {
         System.out.println("Hello, World!");
-//        GMPSExtractor.extract("mxt_", "20250627");
+        String siradt;
+        String tmdt;
+
+        if (args.length == 0) {
+            siradt = DateUtil.today();
+            tmdt = DateUtil.yesterday();
+        } else if (args.length == 2) {
+            siradt = args[0];
+            tmdt = args[1];
+        } else {
+            System.out.println("Usage: java -jar program.jar SIRA_DATE<yyyymmdd> TM_DATE<yyyymmdd>");
+            return;
+        }
+
+        ReportDateContext reportDateContext = new ReportDateContext(siradt, tmdt);
+        ReportProcessingClient client = ReportProcessingClient.getInstance(reportDateContext);
+        /*
+         * ↓↓↓ Handler Registration Guide ↓↓↓
+         * To add or remove report handlers, uncomment and modify the following lines:
+         * - To add a handler:      client.addHandler(...)
+         * - To remove a handler:   client.removeHandler(...)
+         * These handlers will be invoked during client.process().
+         */
+//        client.addHandler();
+//        client.removeHandler();
+
+        client.process();
+
+
     }
 }
