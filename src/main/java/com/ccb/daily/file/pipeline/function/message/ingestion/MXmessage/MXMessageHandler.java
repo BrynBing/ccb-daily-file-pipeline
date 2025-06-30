@@ -10,5 +10,7 @@ public class MXMessageHandler implements Handler {
         String siradt = context.siradt;
 
         GMPSExtractor.extract("mxt_", siradt);
+
+        System.out.println("--> Completed Extracting GMPS Messages for date " + siradt);
     }
 }

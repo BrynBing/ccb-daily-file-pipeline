@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 
 public class GMPSExtractor {
 
-    private static final Path SOURCE_DIR = Paths.get("D:\\CCB\\gmps");
-    private static final Path TARGET_ROOT = Paths.get("D:\\CCB\\gmps_share");
+    private static final Path SOURCE_DIR = Paths.get("D:\\CCB\\gmps"); // /home/ap/bde/data/gmps
+    private static final Path TARGET_ROOT = Paths.get("D:\\CCB\\gmps_share"); // /home/ap/bde/data/gmps_share
 
     public static void extract(String prefix, String date) throws IOException {
         Path targetDir = TARGET_ROOT.resolve(date + "MX");
@@ -19,7 +19,7 @@ public class GMPSExtractor {
         Path incomeFile = SOURCE_DIR.resolve(incomeName);
         Path outgoFile  = SOURCE_DIR.resolve(outgoName);
 
-        System.out.println("Extracting " + incomeName + " to " + outgoName);
+        System.out.println("Extracting GMPS " + date +"Files...");
 
         if (!Files.exists(incomeFile) && !Files.exists(outgoFile)) {
             System.out.println("No GMPS tar files found for date " + date);
@@ -38,7 +38,7 @@ public class GMPSExtractor {
             extractTarFile(outgoFile, targetDir);
         }
 
-        System.out.println("Finished extracting GMPS files for date " + date);
+        System.out.println("Finished extracting GMPS Files for date " + date);
     }
 
     private static void extractTarFile(Path tarFilePath, Path targetDir) throws IOException {

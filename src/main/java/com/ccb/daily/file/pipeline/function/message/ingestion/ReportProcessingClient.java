@@ -1,5 +1,6 @@
 package com.ccb.daily.file.pipeline.function.message.ingestion;
 
+import com.ccb.daily.file.pipeline.function.message.ingestion.MTfile.EFSFileHandler;
 import com.ccb.daily.file.pipeline.function.message.ingestion.MXmessage.MXMessageHandler;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class ReportProcessingClient {
 
     private void registerDefaultHandlers() {
         addHandler(new MXMessageHandler());
-//        addHandler(new TransferHandler());
+        addHandler(new EFSFileHandler());
     }
 
     public void addHandler(Handler handler) {

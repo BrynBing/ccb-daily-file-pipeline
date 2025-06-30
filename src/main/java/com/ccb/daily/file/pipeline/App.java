@@ -6,7 +6,7 @@ import com.ccb.daily.file.pipeline.utils.DateUtil;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+//        Reports
         String siradt;
         String tmdt;
 
@@ -24,11 +24,15 @@ public class App {
         ReportDateContext reportDateContext = new ReportDateContext(siradt, tmdt);
         ReportProcessingClient client = ReportProcessingClient.getInstance(reportDateContext);
         /*
-         * ↓↓↓ Handler Registration Guide ↓↓↓
+         * --- Handler Registration Guide ---
          * To add or remove report handlers, uncomment and modify the following lines:
          * - To add a handler:      client.addHandler(...)
          * - To remove a handler:   client.removeHandler(...)
          * These handlers will be invoked during client.process().
+         *
+         * By default, the following handlers are registered:
+         * - MXMessageHandler
+         * - EFSFileHandler
          */
 //        client.addHandler();
 //        client.removeHandler();
