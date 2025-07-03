@@ -1,15 +1,18 @@
-package com.ccb.daily.file.pipeline.function.message.ingestion.MTfile;
+package com.ccb.daily.file.pipeline.message.ingestion.MTfile;
 
-import com.ccb.daily.file.pipeline.function.message.ingestion.Handler;
-import com.ccb.daily.file.pipeline.function.message.ingestion.ReportDateContext;
+import com.ccb.daily.file.pipeline.message.ingestion.Handler;
+import com.ccb.daily.file.pipeline.message.ingestion.ReportDateContext;
 
 import java.io.BufferedReader;
 import java.nio.file.*;
 
 public class EFSFileHandler implements Handler {
     private static final Path SOURCE_DIR_ROOT = Paths.get("D:\\CCB\\P10\\000000000"); // /home/ap/bde/data/P10/000000000
+//    private static final Path SOURCE_DIR_ROOT = Paths.get("C:\\Test\\P10\\000000000");
     private static final Path DEST_DIR_ROOT = Paths.get("D:\\CCB\\EFS"); // /home/ap/bde/data/EFS
+//    private static final Path DEST_DIR_ROOT = Paths.get("C:\\Test\\EFS");
     private static final Path FILE_LIST = Paths.get("D:\\CCB\\sbin\\EFSFileList.txt"); // /home/ap/bde/sbin/EFSFileList.txt
+//    private static final Path FILE_LIST = Paths.get("C:\\Test\\EFSFileList.txt");
     @Override
     public void handle(ReportDateContext context) throws Exception {
         String tmdt = context.tmdt;

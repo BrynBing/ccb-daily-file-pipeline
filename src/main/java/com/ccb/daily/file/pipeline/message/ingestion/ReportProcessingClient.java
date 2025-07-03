@@ -1,27 +1,18 @@
-package com.ccb.daily.file.pipeline.function.message.ingestion;
+package com.ccb.daily.file.pipeline.message.ingestion;
 
-import com.ccb.daily.file.pipeline.function.message.ingestion.MTfile.EFSFileHandler;
-import com.ccb.daily.file.pipeline.function.message.ingestion.MXmessage.MXMessageHandler;
+import com.ccb.daily.file.pipeline.message.ingestion.MTfile.EFSFileHandler;
+import com.ccb.daily.file.pipeline.message.ingestion.MXmessage.MXMessageHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReportProcessingClient {
-    private static ReportProcessingClient instance;
-
     private final ReportDateContext context;
     private final List<Handler> handlers = new ArrayList<>();
 
-    private ReportProcessingClient(ReportDateContext context) {
+    public ReportProcessingClient(ReportDateContext context) {
         this.context = context;
         registerDefaultHandlers();
-    }
-
-    public static ReportProcessingClient getInstance(ReportDateContext context) {
-        if (instance == null) {
-            instance = new ReportProcessingClient(context);
-        }
-        return instance;
     }
 
     private void registerDefaultHandlers() {
@@ -43,7 +34,7 @@ public class ReportProcessingClient {
                 handler.handle(context);
             } catch (Exception e) {
                 System.err.println("Report handler failed: " + handler.getClass().getSimpleName());
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
     }

@@ -1,7 +1,7 @@
 package com.ccb.daily.file.pipeline;
 
-import com.ccb.daily.file.pipeline.function.message.ingestion.ReportDateContext;
-import com.ccb.daily.file.pipeline.function.message.ingestion.ReportProcessingClient;
+import com.ccb.daily.file.pipeline.message.ingestion.ReportDateContext;
+import com.ccb.daily.file.pipeline.message.ingestion.ReportProcessingClient;
 import com.ccb.daily.file.pipeline.utils.DateUtil;
 
 public class App {
@@ -21,8 +21,8 @@ public class App {
             return;
         }
 
-        ReportDateContext reportDateContext = new ReportDateContext(siradt, tmdt);
-        ReportProcessingClient client = ReportProcessingClient.getInstance(reportDateContext);
+        ReportDateContext context = new ReportDateContext(siradt, tmdt);
+        ReportProcessingClient client = new ReportProcessingClient(context);
         /*
          * --- Handler Registration Guide ---
          * To add or remove report handlers, uncomment and modify the following lines:

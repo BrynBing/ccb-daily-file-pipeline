@@ -1,4 +1,4 @@
-package com.ccb.daily.file.pipeline.function.message.ingestion;
+package com.ccb.daily.file.pipeline.message.ingestion;
 
 public class ReportDateContext {
     public final String siradt;
