@@ -1,23 +1,22 @@
 /**
  * GMPSExtractor is a utility class for extracting GMPS report files from tar archives.
- *
+ * <p>
  * This class is specifically designed to handle extraction of two types of tar files:
  * - Income tar: Files will be extracted directly into the root of the target directory.
  * - Outgo tar: Files will be extracted into a subdirectory named after the report date.
- *
- * The extracted content is placed in a shared destination directory (e.g., gmps_share),
- * organized by date. If the target directory already exists, it will be deleted and recreated.
- *
+ * <p>
+ * The extracted content is placed in a shared destination directory, organized by date.
+ * If the target directory already exists, it will be deleted and recreated.
+ * <p>
  * This class delegates target path construction to the caller, allowing flexibility in naming
- * (e.g., "20250630MX" or just "20250630"), depending on the report type (MX or MT).
- *
+ * depending on the report type (MX, MT, etc.).
+ * <p>
  * Note: This class uses the system tar command and requires it to be available in the environment path.
  *
  * @author Bryn Zhou (Bing Zhou)
  * @version 1.0
  * @since 2025-06-27
  */
-
 
 package com.ccb.daily.file.pipeline.message.ingestion;
 
@@ -28,8 +27,8 @@ import java.util.stream.Stream;
 
 public class GMPSExtractor {
 
-    private static final Path SOURCE_DIR = Paths.get("D:\\CCB\\gmps"); // /home/ap/bde/data/gmps
-//    private static final Path SOURCE_DIR = Paths.get("C:\\Test\\gmps");
+//    private static final Path SOURCE_DIR = Paths.get("D:\\CCB\\gmps"); // /home/ap/bde/data/gmps
+    private static final Path SOURCE_DIR = Paths.get("\\\\ccbausydnas02\\data\\gmps");
 
     public static void extract(String prefix, String date, Path targetDir) throws IOException {
 //        Path targetDir = TARGET_ROOT.resolve(date + "MX");
@@ -41,6 +40,12 @@ public class GMPSExtractor {
         Path outgoFile  = SOURCE_DIR.resolve(outgoName);
 
         System.out.println("Extracting GMPS " + date +"Files...");
+
+        if (!Files.exists(SOURCE_DIR)) {
+            System.out.println("source dir does not exist: " + SOURCE_DIR);
+        } else {
+            System.out.println("source dir: " + SOURCE_DIR);
+        }
 
         if (!Files.exists(incomeFile) && !Files.exists(outgoFile)) {
             System.out.println("No GMPS tar files found for date " + date);

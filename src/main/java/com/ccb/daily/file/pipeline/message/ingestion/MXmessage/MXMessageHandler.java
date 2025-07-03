@@ -1,3 +1,15 @@
+/**
+ * Handles the extraction of MX messages.
+ * <p>
+ * This class performs the extraction of MX message files from a predefined input
+ * location and outputs the results to a target directory named using the current date
+ * with an "MX" suffix. For example, {@code G:/gmps_share/20250703MX}.
+ *
+ * @author Bryn Zhou (Bing Zhou)
+ * @version 1.0
+ * @since 2025-06-27
+ */
+
 package com.ccb.daily.file.pipeline.message.ingestion.MXmessage;
 
 import com.ccb.daily.file.pipeline.message.ingestion.ReportDateContext;
@@ -8,8 +20,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class MXMessageHandler implements Handler {
-    private static final Path TARGET_ROOT = Paths.get("D:\\CCB\\gmps_share"); // /home/ap/bde/data/gmps_share
-    //    private static final Path TARGET_ROOT = Paths.get("C:\\Test\\gmps_share");
+//    private static final Path TARGET_ROOT = Paths.get("D:\\CCB\\gmps_share"); // /home/ap/bde/data/gmps_share
+        private static final Path TARGET_ROOT = Paths.get("\\\\ccbausydfs02\\shared\\Common\\IT_common\\gmps_share");
 
     @Override
     public void handle(ReportDateContext context) throws Exception {

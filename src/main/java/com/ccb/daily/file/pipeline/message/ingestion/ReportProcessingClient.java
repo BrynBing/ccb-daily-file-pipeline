@@ -1,3 +1,23 @@
+/**
+ * Central coordinator for executing report processing handlers.
+ * <p>
+ * This client manages a list of {@link Handler} implementations, each responsible for
+ * a specific task such as extracting or transforming daily report files. It dispatches them
+ * sequentially using a shared {@link ReportDateContext}, which provides consistent date input
+ * to all handlers.
+ * <p>
+ * By default, the client registers built-in handlers for MX message extraction and EFS file handling,
+ * but additional handlers can be added or removed dynamically using {@link #addHandler(Handler)} and
+ * {@link #removeHandler(Handler)}.
+ * <p>
+ * This class is typically instantiated once per daily processing task, with a context representing
+ * the target date. It then invokes {@link #process()} to execute all registered handlers in order.
+ *
+ * @author Bryn Zhou (Bing Zhou)
+ * @version 1.0
+ * @since 2025-06-27
+ */
+
 package com.ccb.daily.file.pipeline.message.ingestion;
 
 import com.ccb.daily.file.pipeline.message.ingestion.MTfile.EFSFileHandler;
@@ -34,7 +54,7 @@ public class ReportProcessingClient {
                 handler.handle(context);
             } catch (Exception e) {
                 System.err.println("Report handler failed: " + handler.getClass().getSimpleName());
-//                e.printStackTrace();
+                e.printStackTrace();
             }
         }
     }
