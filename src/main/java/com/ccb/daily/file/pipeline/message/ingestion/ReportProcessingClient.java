@@ -20,9 +20,6 @@
 
 package com.ccb.daily.file.pipeline.message.ingestion;
 
-import com.ccb.daily.file.pipeline.message.ingestion.MTfile.EFSFileHandler;
-import com.ccb.daily.file.pipeline.message.ingestion.MXmessage.MXMessageHandler;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,21 +29,21 @@ public class ReportProcessingClient {
 
     public ReportProcessingClient(ReportDateContext context) {
         this.context = context;
-        registerDefaultHandlers();
+//        registerDefaultHandlers();
     }
 
-    private void registerDefaultHandlers() {
-        addHandler(new MXMessageHandler());
-        addHandler(new EFSFileHandler());
-    }
+//    private void registerDefaultHandlers() {
+//        addHandler(new MXMessageHandler());
+//        addHandler(new EFSFileHandler());
+//    }
 
     public void addHandler(Handler handler) {
         handlers.add(handler);
     }
 
-    public void removeHandler(Handler handler) {
-        handlers.remove(handler);
-    }
+//    public void removeHandler(Handler handler) {
+//        handlers.remove(handler);
+//    }
 
     public void process() {
         for (Handler handler : handlers) {

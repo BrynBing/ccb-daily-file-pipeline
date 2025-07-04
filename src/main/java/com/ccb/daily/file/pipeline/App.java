@@ -1,5 +1,31 @@
+/**
+ * Main entry point for the daily report file processing pipeline.
+ * <p>
+ * This class initializes the {@link com.ccb.daily.file.pipeline.message.ingestion.ReportDateContext}
+ * based on provided command-line arguments and triggers the execution of all registered
+ * {@link com.ccb.daily.file.pipeline.message.ingestion.Handler} components via the
+ * {@link com.ccb.daily.file.pipeline.message.ingestion.ReportProcessingClient}.
+ *
+ * <p><strong>Usage:</strong>
+ * <pre>
+ *     java -jar ccb-daily-file-pipeline-1.0-SNAPSHOT.jar SIRA_DATE TM_DATE
+ * </pre>
+ * <p>
+ * If no arguments are provided, the current date is used as {@code SIRA_DATE}
+ * and the previous day as {@code TM_DATE}.
+ * <p>
+ * Additional handlers can be added or removed via {@code client.addHandler()} or
+ * {@code client.removeHandler()} before calling {@code client.process()}.
+ *
+ * @author Bryn Zhou (Bing Zhou)
+ * @version 1.0
+ * @since 2025-06-27
+ */
+
 package com.ccb.daily.file.pipeline;
 
+import com.ccb.daily.file.pipeline.message.ingestion.MTfile.EFSFileHandler;
+import com.ccb.daily.file.pipeline.message.ingestion.MXmessage.MXMessageHandler;
 import com.ccb.daily.file.pipeline.message.ingestion.ReportDateContext;
 import com.ccb.daily.file.pipeline.message.ingestion.ReportProcessingClient;
 import com.ccb.daily.file.pipeline.utils.DateUtil;
@@ -25,17 +51,21 @@ public class App {
         ReportProcessingClient client = new ReportProcessingClient(context);
         /*
          * --- Handler Registration Guide ---
-         * To add or remove report handlers, uncomment and modify the following lines:
-         * - To add a handler:      client.addHandler(...)
-         * - To remove a handler:   client.removeHandler(...)
+         * To include or exclude report handlers, simply comment or uncomment the following lines:
+         * - To include a handler:   client.addHandler(new YourHandler());
+         * - To exclude a handler:   comment out the corresponding addHandler(...) line
+         *
          * These handlers will be invoked during client.process().
          *
          * By default, the following handlers are registered:
          * - MXMessageHandler
          * - EFSFileHandler
+         *
+         * If you don't need a handler, you can disable it by commenting out its registration line.
          */
-//        client.addHandler();
-//        client.removeHandler();
+
+        client.addHandler(new MXMessageHandler());
+        client.addHandler(new EFSFileHandler());
 
         client.process();
 

@@ -30,7 +30,7 @@ public class EFSFileHandler implements Handler {
         String tmdt = context.tmdt;
         Path sourceDir = SOURCE_DIR_ROOT.resolve(tmdt);
         if (!Files.isDirectory(sourceDir)) {
-            System.out.println("No directory found for date: " + tmdt);
+            System.out.println("No EFS directory found for date: " + tmdt);
             return;
         }
 
