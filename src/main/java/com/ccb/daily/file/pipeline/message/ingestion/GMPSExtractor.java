@@ -30,9 +30,7 @@ public class GMPSExtractor {
 //    private static final Path SOURCE_DIR = Paths.get("D:\\CCB\\gmps"); // /home/ap/bde/data/gmps
     private static final Path SOURCE_DIR = Paths.get("\\\\ccbausydnas02\\data\\gmps");
 
-    public static void extract(String prefix, String date, Path targetDir) throws IOException {
-//        Path targetDir = TARGET_ROOT.resolve(date + "MX");
-
+    public static boolean extract(String prefix, String date, Path targetDir) throws IOException {
         String incomeName = prefix + "income_prd_" + date + ".tar";
         String outgoName  = prefix + "outgo_prd_"  + date + ".tar";
 
@@ -43,13 +41,14 @@ public class GMPSExtractor {
 
         if (!Files.exists(SOURCE_DIR)) {
             System.out.println("source dir does not exist: " + SOURCE_DIR);
+            return false;
         } else {
             System.out.println("source dir: " + SOURCE_DIR);
         }
 
         if (!Files.exists(incomeFile) && !Files.exists(outgoFile)) {
             System.out.println("No GMPS tar files found for date " + date);
-            return;
+            return false;
         }
 
         if (Files.exists(targetDir)) {
@@ -65,6 +64,7 @@ public class GMPSExtractor {
         }
 
         System.out.println("Finished extracting GMPS Files for date " + date);
+        return true;
     }
 
     private static void extractTarFile(Path tarFilePath, Path targetDir) throws IOException {

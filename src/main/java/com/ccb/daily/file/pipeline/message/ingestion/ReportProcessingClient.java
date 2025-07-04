@@ -6,9 +6,7 @@
  * sequentially using a shared {@link ReportDateContext}, which provides consistent date input
  * to all handlers.
  * <p>
- * By default, the client registers built-in handlers for MX message extraction and EFS file handling,
- * but additional handlers can be added or removed dynamically using {@link #addHandler(Handler)} and
- * {@link #removeHandler(Handler)}.
+ * Additional handlers can be added dynamically using {@link #addHandler(Handler)}.
  * <p>
  * This class is typically instantiated once per daily processing task, with a context representing
  * the target date. It then invokes {@link #process()} to execute all registered handlers in order.

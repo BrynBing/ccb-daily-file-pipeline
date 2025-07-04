@@ -28,8 +28,11 @@ public class MXMessageHandler implements Handler {
         String siradt = context.siradt;
         Path targetDir = TARGET_ROOT.resolve(siradt + "MX");
 
-        GMPSExtractor.extract("mxt_", siradt, targetDir);
-
-        System.out.println("--> Completed Extracting GMPS Messages for date " + siradt);
+//        GMPSExtractor.extract("mxt_", siradt, targetDir);
+//
+//        System.out.println("--> Completed Extracting GMPS Messages for date " + siradt);
+        if (GMPSExtractor.extract("mxt_", siradt, targetDir)) {
+            System.out.println("--> Completed Extracting GMPS Messages for date " + siradt);
+        }
     }
 }
