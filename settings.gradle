@@ -1,2 +1,6 @@
 rootProject.name = 'ccb-daily-file-pipeline'
+include 'handler-mt-efs'
+include 'handler-mx-gmps'
+include 'shared-core'
+include 'app-main'
 
