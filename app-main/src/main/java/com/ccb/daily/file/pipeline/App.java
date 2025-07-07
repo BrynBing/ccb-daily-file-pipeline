@@ -26,6 +26,10 @@
  *   <li><b>v1.0</b> – Initial implementation as part of unified report processing pipeline</li>
  *   <li><b>v1.1</b> – Refactored into a standalone handler module with independent execution entry</li>
  * </ul>
+ * <p>
+ * In version 1.1, this is retained for local testing only and is no longer used
+ * in production where handlers are executed independently.
+ * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
  * @version 1.1
