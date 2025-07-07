@@ -1,19 +1,23 @@
 /**
  * Central coordinator for executing report processing handlers.
+ * Created on 2025-06-27.
  * <p>
- * This client manages a list of {@link Handler} implementations, each responsible for
- * a specific task such as extracting or transforming daily report files. It dispatches them
- * sequentially using a shared {@link ReportDateContext}, which provides consistent date input
- * to all handlers.
+ * This client manages a list of {@link com.ccb.daily.file.pipeline.Handler} implementations,
+ * each responsible for a specific task such as extracting or transforming daily report files.
+ * It dispatches them sequentially using a shared {@link com.ccb.daily.file.pipeline.ReportDateContext},
+ * which provides consistent date input to all handlers.
+ * </p>
  * <p>
  * Additional handlers can be added dynamically using {@link #addHandler(Handler)}.
+ * </p>
  * <p>
  * This class is typically instantiated once per daily processing task, with a context representing
  * the target date. It then invokes {@link #process()} to execute all registered handlers in order.
+ * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
- * @version 1.0
- * @since 2025-06-27
+ * @version 1.1
+ * @since 1.0
  */
 
 package com.ccb.daily.file.pipeline;

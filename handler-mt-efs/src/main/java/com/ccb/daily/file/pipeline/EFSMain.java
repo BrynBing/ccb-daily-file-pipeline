@@ -1,3 +1,17 @@
+/**
+ * Entry point for executing the {@link com.ccb.daily.file.pipeline.EFSFileHandler}.
+ * Created on 2025-07-07.
+ * <p>
+ * This program handles the movement of EFS MT Excel files from a source directory to a
+ * destination folder based on the specified report date.
+ * Introduced in version 1.1 to support modular and permission-isolated execution.
+ * </p>
+ *
+ * @author Bryn Zhou (Bing Zhou)
+ * @version 1.1
+ * @since 1.1
+ */
+
 package com.ccb.daily.file.pipeline;
 
 public class EFSMain {

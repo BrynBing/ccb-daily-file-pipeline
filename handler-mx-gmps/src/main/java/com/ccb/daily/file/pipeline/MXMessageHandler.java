@@ -1,13 +1,15 @@
 /**
- * Handles the extraction of MX messages.
+ * Handles the extraction of GMPS MX messages.
+ * Created on 2025-06-27.
  * <p>
- * This class performs the extraction of MX message files from a predefined input
+ * This class performs the extraction of GMPS MX message files from a predefined input
  * location and outputs the results to a target directory named using the current date
  * with an "MX" suffix. For example, {@code G:/gmps_share/20250703MX}.
+ * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
- * @version 1.0
- * @since 2025-06-27
+ * @version 1.1
+ * @since 1.0
  */
 
 package com.ccb.daily.file.pipeline;
