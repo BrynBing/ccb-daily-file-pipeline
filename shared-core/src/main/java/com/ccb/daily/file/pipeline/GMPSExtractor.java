@@ -1,21 +1,23 @@
 /**
  * GMPSExtractor is a utility class for extracting GMPS report files from tar archives.
+ * Created on 2025-06-27.
  * <p>
  * This class is specifically designed to handle extraction of two types of tar files:
  * - Income tar: Files will be extracted directly into the root of the target directory.
  * - Outgo tar: Files will be extracted into a subdirectory named after the report date.
+ * </p>
  * <p>
  * The extracted content is placed in a shared destination directory, organized by date.
  * If the target directory already exists, it will be deleted and recreated.
+ * </p>
  * <p>
  * This class delegates target path construction to the caller, allowing flexibility in naming
  * depending on the report type (MX, MT, etc.).
- * <p>
- * Note: This class uses the system tar command and requires it to be available in the environment path.
+ * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
- * @version 1.0
- * @since 2025-06-27
+ * @version 1.1
+ * @since 1.0
  */
 
 package com.ccb.daily.file.pipeline;

@@ -1,13 +1,15 @@
 /**
  * Handler responsible for fetching EFS Excel files for a given processing date.
+ * Created on 2025-06-27.
  * <p>
  * This class reads a list of expected EFS filenames from a predefined text file,
  * locates each corresponding file under a date-based source directory, and copies
  * them into a destination folder named after the same date.
+ * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
- * @version 1.0
- * @since 2025-06-27
+ * @version 1.1
+ * @since 1.0
  */
 
 package com.ccb.daily.file.pipeline;

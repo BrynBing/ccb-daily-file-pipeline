@@ -1,3 +1,16 @@
+/**
+ * Entry point for executing the {@link com.ccb.daily.file.pipeline.MXMessageHandler}.
+ * Created on 2025-07-07.
+ * <p>
+ * This handler performs the extraction of GMPS MX message tar files into a date-based
+ * destination directory. Introduced in version 1.1 as part of the modular refactor.
+ * </p>
+ *
+ * @author Bryn Zhou (Bing Zhou)
+ * @version 1.1
+ * @since 1.1
+ */
+
 package com.ccb.daily.file.pipeline;
 
 public class MXGMPSMain {
