@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.ccb.daily.file.pipeline'
+version = '1.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation project(':shared-core')
+    implementation project(':handler-mx-gmps')
+    implementation project(':handler-mt-efs')
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'com.ccb.daily.file.pipeline.App'
+
+    // Sets the default JVM argument to enforce UTF-8 encoding for file operations.
+    applicationDefaultJvmArgs = ['-Dfile.encoding=UTF-8']
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.ccb.daily.file.pipeline.App'
+        )
+    }
+}
