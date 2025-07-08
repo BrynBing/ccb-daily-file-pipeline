@@ -38,12 +38,6 @@
 
 package com.ccb.daily.file.pipeline;
 
-import com.ccb.daily.file.pipeline.EFSFileHandler;
-import com.ccb.daily.file.pipeline.MXMessageHandler;
-import com.ccb.daily.file.pipeline.ReportDateContext;
-import com.ccb.daily.file.pipeline.ReportProcessingClient;
-import com.ccb.daily.file.pipeline.DateUtil;
-
 public class App {
     public static void main(String[] args) {
 //        Reports
