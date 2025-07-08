@@ -16,8 +16,9 @@
  * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
- * @version 1.1
+ * @version 1.0
  * @since 1.0
+ * @deprecated since 1.1 – replaced by handler-specific apps
  */
 
 package com.ccb.daily.file.pipeline;
