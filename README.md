@@ -119,6 +119,5 @@ This separation supports real-world scenarios where certain reports reside on di
 ### v1.2 (2025-07-10)
 - Introduced CLI arguments for **input/output path** configuration per handler
 - Removed hardcoded paths in `EFSFileHandler` and `MXMessageHandler`
-- Refactored handlers to accept `HandlerConfig` objects
 - Updated error messages to reflect new CLI format
 
