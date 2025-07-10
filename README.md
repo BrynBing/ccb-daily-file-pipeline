@@ -59,27 +59,28 @@ This architecture allows for new handler modules to be added or replaced with mi
 
 ---
 
-## 5. ⚙️ Usage
+## 5. Usage
 
-All modules in this project accept the same input format:
+Each module in this project accepts a unified input format for dates and paths:
 
-- Optional arguments: `[siradt] [tmdt]`
-- If no arguments are provided, the system defaults to using today's date and yesterday's date
-- The input format is consistent regardless of which module or entry point is used
+- **Required arguments:** `<Source_Dir> <Target_Dir>`
+- **Optional arguments:** `[siradt] [tmdt]` (format: `yyyymmdd`)
+- If no dates are provided, the system will default to using today's date and yesterday's date
+- The CLI format is consistent across all modules and entry points, but each handler may use different paths as needed
 
 ### Run unified entry (`app-main`)
 Use this to execute all available handler modules in sequence.
 ```bash
-java -jar ccb-daily-file-pipeline-1.1-SNAPSHOT.jar
+java -jar ccb-daily-file-pipeline-1.1-SNAPSHOT.jar <Source_Dir> <Target_Dir>
 ```
 
 ### Run individual modules
 Each handler (e.g., GMPS or EFS) can also be run independently for targeted processing or debugging.
 ```bash
-java -jar handler-mx-gmps-all-1.1-SNAPSHOT.jar
+java -jar handler-mx-gmps-all-1.1-SNAPSHOT.jar <Source_Dir> <Target_Dir>
 ```
 ```bash
-java -jar handler-mt-efs-all-1.1-SNAPSHOT.jar
+java -jar handler-mt-efs-all-1.1-SNAPSHOT.jar <Source_Dir> <Target_Dir>
 ```
 This consistent input behavior ensures that all entry points follow the same convention, simplifying scheduling and automation.
 
@@ -100,4 +101,24 @@ To ensure proper access to source and output files, the following permissions ar
 Each handler may be executed under a separate service account, allowing fine-grained permission control per module.
 
 This separation supports real-world scenarios where certain reports reside on different servers or share folders with restricted access.
+
+---
+
+## Changelog
+
+### v1.1 (2025-06-26)
+- Refactored into a **modular architecture**: each handler now has an independent executable
+- Introduced **separate entry points**:
+  - `MXGMPSMain` – extracts GMPS MX message archives
+  - `EFSMain` – fetches EFS MT files
+  - `App` – processes unified execution
+- Enabled **assignment of different service accounts** for permission-sensitive tasks
+- Extracted shared logic into a **core module** for reuse and cleaner structure
+- Maintains **backward compatibility** with version 1.0
+
+### v1.2 (2025-07-10)
+- Introduced CLI arguments for **input/output path** configuration per handler
+- Removed hardcoded paths in `EFSFileHandler` and `MXMessageHandler`
+- Refactored handlers to accept `HandlerConfig` objects
+- Updated error messages to reflect new CLI format
 
