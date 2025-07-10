@@ -6,9 +6,13 @@
  * destination folder based on the specified report date.
  * Introduced in version 1.1 to support modular and permission-isolated execution.
  * </p>
+ * <p>
+ * v1.2 update: Modified CLI arguments to require source and destination paths;
+ * report date remains optional with default to today/yesterday.
+ * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
- * @version 1.1
+ * @version 1.2
  * @since 1.1
  */
 
@@ -19,18 +23,31 @@ public class EFSMain {
         String siradt;
         String tmdt;
 
-        if (args.length == 0) {
+        String sourceDir;
+        String targetDir;
+
+        if (args.length == 2) {
             siradt = DateUtil.today();
             tmdt = DateUtil.yesterday();
-        } else if (args.length == 2) {
-            siradt = args[0];
-            tmdt = args[1];
+            sourceDir = args[0];
+            targetDir = args[1];
+        } else if (args.length == 4) {
+            siradt = args[2];
+            tmdt = args[3];
+            sourceDir = args[0];
+            targetDir = args[1];
         } else {
-            System.out.println("Usage: java -jar program.jar SIRA_DATE<yyyymmdd> TM_DATE<yyyymmdd>");
+            System.out.println("Usage:");
+            System.out.println("  java -jar program.jar <Source_Dir> <Target_Dir>");
+            System.out.println("  java -jar program.jar <SIRA_DATE: yyyymmdd> <TM_DATE: yyyymmdd> <sourceDir> <destDir>");
+            System.out.println();
+            System.out.println("  If no dates are provided, today's and yesterday's date will be used by default.");
+            System.out.println("  Source_Dir and Target_Dir are required.");
+
             return;
         }
 
-        EFSFileHandler handler = new EFSFileHandler();
+        EFSFileHandler handler = new EFSFileHandler(sourceDir, targetDir);
         ReportDateContext context = new ReportDateContext(siradt, tmdt);
 
         handler.handle(context);

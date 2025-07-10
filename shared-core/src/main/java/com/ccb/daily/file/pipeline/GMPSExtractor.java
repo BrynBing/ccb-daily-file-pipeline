@@ -14,9 +14,12 @@
  * This class delegates target path construction to the caller, allowing flexibility in naming
  * depending on the report type (MX, MT, etc.).
  * </p>
+ * <p>
+ * v1.2 update: removing hardcoded paths for better flexibility.
+ * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
- * @version 1.1
+ * @version 1.2
  * @since 1.0
  */
 
@@ -25,29 +28,25 @@ package com.ccb.daily.file.pipeline;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
 public class GMPSExtractor {
 
-//    private static final Path SOURCE_DIR = Paths.get("D:\\CCB\\gmps"); // /home/ap/bde/data/gmps
-    private static final Path SOURCE_DIR = Paths.get("\\\\ccbausydnas02\\data\\gmps");
-
-    public static boolean extract(String prefix, String date, Path targetDir) throws IOException {
+    public static boolean extract(String prefix, String date, Path sourceDir, Path targetDir) throws IOException {
         String incomeName = prefix + "income_prd_" + date + ".tar";
         String outgoName  = prefix + "outgo_prd_"  + date + ".tar";
 
-        Path incomeFile = SOURCE_DIR.resolve(incomeName);
-        Path outgoFile  = SOURCE_DIR.resolve(outgoName);
+        Path incomeFile = sourceDir.resolve(incomeName);
+        Path outgoFile  = sourceDir.resolve(outgoName);
 
         System.out.println("Extracting GMPS " + date +"Files...");
 
-        if (!Files.exists(SOURCE_DIR)) {
-            System.out.println("source dir does not exist: " + SOURCE_DIR);
+        if (!Files.exists(sourceDir)) {
+            System.out.println("source dir does not exist: " + sourceDir);
             return false;
         } else {
-            System.out.println("source dir: " + SOURCE_DIR);
+            System.out.println("source dir: " + sourceDir);
         }
 
         if (!Files.exists(incomeFile) && !Files.exists(outgoFile)) {

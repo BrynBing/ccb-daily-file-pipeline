@@ -6,9 +6,13 @@
  * locates each corresponding file under a date-based source directory, and copies
  * them into a destination folder named after the same date.
  * </p>
+ * <p>
+ * v1.2 update: Constructor modified to accept source and destination directories as arguments,
+ * removing hardcoded paths for better flexibility.
+ * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
- * @version 1.1
+ * @version 1.2
  * @since 1.0
  */
 
@@ -21,18 +25,18 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 public class EFSFileHandler implements Handler {
-//    private static final Path SOURCE_DIR_ROOT = Paths.get("D:\\CCB\\P10\\000000000"); // /home/ap/bde/data/P10/000000000
-    private static final Path SOURCE_DIR_ROOT = Paths.get("\\\\ccbausydnas02\\data\\P10\\000000000");
-//    private static final Path DEST_DIR_ROOT = Paths.get("D:\\CCB\\EFS"); // /home/ap/bde/data/EFS
-    private static final Path DEST_DIR_ROOT = Paths.get("\\\\ccbausydfs02\\shared\\Common\\IT_common\\EFS");
+    private final Path sourcePath;
+    private final Path targetPath;
 
-//    private static final Path FILE_LIST = Paths.get("D:\\CCB\\sbin\\EFSFileList.txt"); // /home/ap/bde/sbin/EFSFileList.txt
-//    private static final Path FILE_LIST = Paths.get("C:\\Test\\EFSFileList.txt");
+    public EFSFileHandler(String sourceDir, String targetDir) {
+        this.sourcePath = Paths.get(sourceDir);
+        this.targetPath = Paths.get(targetDir);
+    }
 
     @Override
     public void handle(ReportDateContext context) throws Exception {
         String tmdt = context.tmdt;
-        Path sourceDir = SOURCE_DIR_ROOT.resolve(tmdt);
+        Path sourceDir = sourcePath.resolve(tmdt);
 
         System.out.println("Fetching EFS " + tmdt + " Files ......");
 
@@ -41,7 +45,7 @@ public class EFSFileHandler implements Handler {
             return;
         }
 
-        Path destDir = DEST_DIR_ROOT.resolve(tmdt);
+        Path destDir = targetPath.resolve(tmdt);
         Files.createDirectories(destDir);
 
         try (BufferedReader reader = getFileListReader()) {
