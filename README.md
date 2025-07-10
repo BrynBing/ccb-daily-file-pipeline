@@ -47,7 +47,7 @@ The project currently includes the following modules:
   Handles the extraction and processing of GMPS MX `.tar` archives for both income and outgo data
 
 - **handler-mt-efs**  
-  Copies and renames `.xlsx` files for EFS MT reports from a structured source directory
+  Fetches and renames `.xlsx` files for EFS MT reports from a structured source directory
 
 - **shared-core**  
   Provides shared utilities, such as report date context, file helpers, path construction, and logging
