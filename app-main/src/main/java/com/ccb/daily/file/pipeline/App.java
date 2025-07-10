@@ -23,16 +23,20 @@
  * </p>
  * <p><b>Change History:</b></p>
  * <ul>
- *   <li><b>v1.0</b> – Initial implementation as part of unified report processing pipeline</li>
- *   <li><b>v1.1</b> – Refactored into a standalone handler module with independent execution entry</li>
+ *   <li><b>v1.0</b> - Initial implementation as part of unified report processing pipeline</li>
+ *   <li><b>v1.1</b> - Refactored into a standalone handler module with independent execution entry</li>
  * </ul>
  * <p>
  * In version 1.1, this is retained for local testing only and is no longer used
  * in production where handlers are executed independently.
  * </p>
+ * <p>
+ * v1.2 update: Modified CLI arguments to require source and destination paths;
+ * report date remains optional with default to today/yesterday.
+ * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
- * @version 1.1
+ * @version 1.2
  * @since 1.0
  */
 
@@ -44,17 +48,29 @@ public class App {
         String siradt;
         String tmdt;
 
-        if (args.length == 0) {
+        String sourceDir;
+        String targetDir;
+
+        if (args.length == 2) {
             siradt = DateUtil.today();
             tmdt = DateUtil.yesterday();
-        } else if (args.length == 2) {
-            siradt = args[0];
-            tmdt = args[1];
+            sourceDir = args[0];
+            targetDir = args[1];
+        } else if (args.length == 4) {
+            siradt = args[2];
+            tmdt = args[3];
+            sourceDir = args[0];
+            targetDir = args[1];
         } else {
-            System.out.println("Usage: java -jar program.jar SIRA_DATE<yyyymmdd> TM_DATE<yyyymmdd>");
+            System.out.println("Usage:");
+            System.out.println("  java -jar program.jar <Source_Dir> <Target_Dir>");
+            System.out.println("  java -jar program.jar <SIRA_DATE: yyyymmdd> <TM_DATE: yyyymmdd> <sourceDir> <destDir>");
+            System.out.println();
+            System.out.println("  If no dates are provided, today's and yesterday's date will be used by default.");
+            System.out.println("  Source_Dir and Target_Dir are required.");
+
             return;
         }
-
         ReportDateContext context = new ReportDateContext(siradt, tmdt);
         ReportProcessingClient client = new ReportProcessingClient(context);
         /*
@@ -72,8 +88,8 @@ public class App {
          * If you don't need a handler, you can disable it by commenting out its registration line.
          */
 
-        client.addHandler(new MXMessageHandler());
-        client.addHandler(new EFSFileHandler());
+        client.addHandler(new MXMessageHandler(sourceDir, targetDir));
+        client.addHandler(new EFSFileHandler(sourceDir, targetDir));
 
         client.process();
 
