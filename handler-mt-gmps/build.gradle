@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'com.ccb.daily.file.pipeline'
+version = '1.3'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation project(':shared-core')
+}
+
+application {
+    mainClass = 'com.ccb.daily.file.pipeline.MTGMPSMain'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+shadowJar {
+    archiveBaseName.set('handler-mt-gmps-all')
+    archiveClassifier.set('')
+}
