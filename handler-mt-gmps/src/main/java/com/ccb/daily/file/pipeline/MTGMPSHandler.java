@@ -1,6 +1,4 @@
-import com.ccb.daily.file.pipeline.GMPSExtractor;
-import com.ccb.daily.file.pipeline.Handler;
-import com.ccb.daily.file.pipeline.ReportDateContext;
+package com.ccb.daily.file.pipeline;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

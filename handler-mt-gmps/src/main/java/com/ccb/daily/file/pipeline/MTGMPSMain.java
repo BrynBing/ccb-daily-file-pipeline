@@ -1,5 +1,4 @@
-import com.ccb.daily.file.pipeline.DateUtil;
-import com.ccb.daily.file.pipeline.ReportDateContext;
+package com.ccb.daily.file.pipeline;
 
 public class MTGMPSMain {
     public static void main(String[] args) throws Exception {
