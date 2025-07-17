@@ -40,3 +40,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+handler-mt-gmps/src/main/java/com/ccb/daily/file/pipeline/DecodeUtil.java
+handler-mt-efs/src/main/resources/EFSFileList.txt
