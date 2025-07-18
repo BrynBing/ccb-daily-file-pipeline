@@ -32,13 +32,30 @@ public class MTGMPSHandler implements Handler {
             try (Stream<Path> files = Files.walk(tempDir)) {
                 files.filter(Files::isRegularFile).forEach(file -> {
                     try {
-                        Path relativePath = tempDir.relativize(file);
-                        Path outputFile = targetPath.resolve(relativePath);
+//                        Path relativePath = tempDir.relativize(file);
+//                        boolean isOutgo = relativePath.getNameCount() > 1;
+//
+//                        String fileName = file.getFileName().toString();
+//                        if (isOutgo) {
+//                            fileName = fileName + ".OUT";
+//                        }
+//
+//                        Path outputFile = targetPath.resolve(fileName);
 
+
+                        String fileName = file.getFileName().toString();
+                        fileName = "new" + fileName;
+                        Path relativePath = tempDir.relativize(file);
+                        Path outputFile = targetPath.resolve(fileName);
+
+                        if (Files.exists(outputFile)) {
+                            deleteDirectory(outputFile);
+                        }
                         Files.createDirectories(outputFile.getParent());
 
                         String decoded = DecodeUtil.decode(getFileContent(file));
-                        Files.write(outputFile, decoded.getBytes("ISO-8859-2"));
+                        String replaced = PlaceholderReplacer.replaceSNAndISN(decoded);
+                        Files.write(outputFile, replaced.getBytes("ISO-8859-2"));
 
                         System.out.println("Decoded: " + relativePath);
                     } catch (Exception e) {
@@ -48,12 +65,12 @@ public class MTGMPSHandler implements Handler {
                 });
             }
 
-            deleteDirectoryRecursively(tempDir);
+            deleteDirectory(tempDir);
             System.out.println("Temp directory cleaned up.");
         }
     }
 
-    private void deleteDirectoryRecursively(Path dir) throws IOException {
+    private void deleteDirectory(Path dir) throws IOException {
         if (!Files.exists(dir)) return;
         try (Stream<Path> walk = Files.walk(dir)) {
             walk.sorted(Comparator.reverseOrder())
