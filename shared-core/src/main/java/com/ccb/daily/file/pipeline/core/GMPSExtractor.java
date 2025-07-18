@@ -23,7 +23,7 @@
  * @since 1.0
  */
 
-package com.ccb.daily.file.pipeline;
+package com.ccb.daily.file.pipeline.core;
 
 import java.io.IOException;
 import java.nio.file.Files;

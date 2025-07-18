@@ -16,16 +16,20 @@
  * @since 1.0
  */
 
-package com.ccb.daily.file.pipeline;
+package com.ccb.daily.file.pipeline.mx.gmps;
+
+import com.ccb.daily.file.pipeline.core.GMPSExtractor;
+import com.ccb.daily.file.pipeline.core.Handler;
+import com.ccb.daily.file.pipeline.core.ReportDateContext;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class MXMessageHandler implements Handler {
+public class MXGMPSHandler implements Handler {
     private final Path sourcePath;
     private final Path targetRoot;
 
-    public MXMessageHandler(String sourceDir, String targetDir) {
+    public MXGMPSHandler(String sourceDir, String targetDir) {
         this.sourcePath = Paths.get(sourceDir);
         this.targetRoot = Paths.get(targetDir);
     }

@@ -1,4 +1,8 @@
-package com.ccb.daily.file.pipeline;
+package com.ccb.daily.file.pipeline.mt.gmps;
+
+import com.ccb.daily.file.pipeline.core.GMPSExtractor;
+import com.ccb.daily.file.pipeline.core.Handler;
+import com.ccb.daily.file.pipeline.core.ReportDateContext;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

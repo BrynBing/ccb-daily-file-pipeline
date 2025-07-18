@@ -1,5 +1,5 @@
 /**
- * Entry point for executing the {@link com.ccb.daily.file.pipeline.EFSFileHandler}.
+ * Entry point for executing the {@link com.ccb.daily.file.pipeline.mt.efs.EFSFileHandler}.
  * Created on 2025-07-07.
  * <p>
  * This program handles the movement of EFS MT Excel files from a source directory to a
@@ -10,13 +10,21 @@
  * v1.2 update: Modified CLI arguments to require source and destination paths;
  * report date remains optional with default to today/yesterday.
  * </p>
+ * <p>
+ * v1.3 update: This class extends {@link com.ccb.daily.file.pipeline.launcher.Launcher}
+ * and provides the specific {@link com.ccb.daily.file.pipeline.core.Handler} implementation
+ * for MT EFS processing.
+ * </p>
  *
  * @author Bryn Zhou (Bing Zhou)
  * @version 1.3
  * @since 1.1
  */
 
-package com.ccb.daily.file.pipeline;
+package com.ccb.daily.file.pipeline.mt.efs;
+
+import com.ccb.daily.file.pipeline.launcher.Launcher;
+import com.ccb.daily.file.pipeline.core.Handler;
 
 public class EFSMain extends Launcher {
     public static void main(String[] args) throws Exception {

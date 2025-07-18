@@ -19,7 +19,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.ccb.daily.file.pipeline.MTGMPSMain'
+    mainClass = 'com.ccb.daily.file.pipeline.mt.gmps.MTGMPSMain'
 }
 
 test {
