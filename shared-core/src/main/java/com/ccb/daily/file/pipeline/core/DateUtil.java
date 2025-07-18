@@ -1,4 +1,4 @@
-package com.ccb.daily.file.pipeline;
+package com.ccb.daily.file.pipeline.core;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

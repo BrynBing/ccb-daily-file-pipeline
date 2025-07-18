@@ -19,7 +19,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.ccb.daily.file.pipeline.EFSMain'
+    mainClass = 'com.ccb.daily.file.pipeline.mt.efs.EFSMain'
 }
 
 test {

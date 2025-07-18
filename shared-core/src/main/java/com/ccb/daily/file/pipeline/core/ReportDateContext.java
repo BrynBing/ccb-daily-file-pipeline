@@ -11,7 +11,7 @@
  * @since 1.0
  */
 
-package com.ccb.daily.file.pipeline;
+package com.ccb.daily.file.pipeline.core;
 
 public class ReportDateContext {
     public final String siradt;
