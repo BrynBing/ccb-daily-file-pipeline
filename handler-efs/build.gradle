@@ -19,7 +19,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.ccb.daily.file.pipeline.mt.efs.EFSMain'
+    mainClass = 'com.ccb.daily.file.pipeline.efs.EFSMain'
 }
 
 test {
@@ -32,6 +32,6 @@ java {
 }
 
 shadowJar {
-    archiveBaseName.set('handler-mt-efs-all')
+    archiveBaseName.set('handler-efs-all')
     archiveClassifier.set('')
 }
