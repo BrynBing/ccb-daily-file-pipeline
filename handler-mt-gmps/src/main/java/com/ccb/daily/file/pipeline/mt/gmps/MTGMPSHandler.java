@@ -1,3 +1,19 @@
+/**
+ * Handles the processing of MT GMPS files for a specified date.
+ * Created on 2025-07-14.
+ * <p>
+ * This handler performs the following steps:
+ * <ul>
+ *   <li>Extracts GMPS `.tar` archives from the source directory</li>
+ *   <li>Decodes file contents and replaces placeholder values (SN/ISN) with random values</li>
+ *   <li>Writes processed files to the target directory</li>
+ *   <li>Cleans up temporary directories after processing</li>
+ * </ul>
+ *
+ * @author Bryn Zhou (Bing Zhou)
+ * @version 1.3
+ * @since 1.3
+ */
 package com.ccb.daily.file.pipeline.mt.gmps;
 
 import com.ccb.daily.file.pipeline.core.GMPSExtractor;

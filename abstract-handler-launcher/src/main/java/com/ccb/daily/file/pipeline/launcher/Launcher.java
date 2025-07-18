@@ -6,7 +6,8 @@
  * <ul>
  *   <li>Parsing command-line arguments</li>
  *   <li>Initializing report date context</li>
- *   <li>Delegating execution to a concrete {@link Handler} implementation</li>
+ *   <li>Delegating execution to a concrete {@link com.ccb.daily.file.pipeline.core.Handler}
+ *   implementation</li>
  * </ul>
  * Subclasses should implement {@link #createHandler(String, String)} to specify which
  * handler to execute for a given module.
