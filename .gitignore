@@ -42,4 +42,4 @@ bin/
 .DS_Store
 
 handler-mt-gmps/src/main/java/com/ccb/daily/file/pipeline/mt/gmps/DecodeUtil.java
-handler-mt-efs/src/main/resources/EFSFileList.txt
+handler-efs/src/main/resources/EFSFileList.txt

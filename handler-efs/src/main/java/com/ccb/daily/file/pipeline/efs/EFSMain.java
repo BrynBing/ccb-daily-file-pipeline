@@ -21,10 +21,10 @@
  * @since 1.1
  */
 
-package com.ccb.daily.file.pipeline.mt.efs;
+package com.ccb.daily.file.pipeline.efs;
 
-import com.ccb.daily.file.pipeline.launcher.Launcher;
 import com.ccb.daily.file.pipeline.core.Handler;
+import com.ccb.daily.file.pipeline.launcher.Launcher;
 
 public class EFSMain extends Launcher {
     public static void main(String[] args) throws Exception {
