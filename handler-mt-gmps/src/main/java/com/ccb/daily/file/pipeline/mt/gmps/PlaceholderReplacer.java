@@ -1,3 +1,19 @@
+/**
+ * Utility class for replacing placeholder tokens in text content.
+ * <p>
+ * Specifically, it searches for occurrences of {@code .SN..ISN.} within the
+ * input string and replaces them with randomly generated 10-digit numeric values.
+ * </p>
+ * <p>
+ * This is typically used during post-processing of extracted MT files to ensure
+ * unique serial numbers and identifiers in the final output.
+ * </p>
+ *
+ * @author Bryn Zhou (Bing Zhou)
+ * @version 1.3
+ * @since 1.3
+ */
+
 package com.ccb.daily.file.pipeline.mt.gmps;
 
 import java.util.UUID;
