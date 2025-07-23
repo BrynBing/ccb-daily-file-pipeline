@@ -64,7 +64,7 @@ public class EFSFileHandler implements Handler {
             }
         }
 
-        System.out.println("--> Completed Fetching EFS MT Files");
+        System.out.println("--> Completed Fetching EFS Files");
     }
 
     private static BufferedReader getFileListReader() throws IOException {

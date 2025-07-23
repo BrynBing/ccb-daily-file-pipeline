@@ -63,6 +63,9 @@ public abstract class Launcher {
         Handler handler = createHandler(sourceDir, targetDir);
         ReportDateContext context = new ReportDateContext(siradt, tmdt);
 
+        String timestamp = new java.util.Date().toString();
+        System.out.println("[" + timestamp + "] Starting execution...");
+
         handler.handle(context);
     }
 
