@@ -11,15 +11,15 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass = 'com.ccb.daily.file.pipeline.smis.SMISMain'
+}
+
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation project(':abstract-handler-launcher')
     implementation project(':shared-core')
-}
-
-application {
-    mainClass = 'com.ccb.daily.file.pipeline.mx.gmps.MXGMPSMain'
 }
 
 test {
@@ -32,6 +32,6 @@ java {
 }
 
 shadowJar {
-    archiveBaseName.set('handler-mx-gmps-all')
+    archiveBaseName.set('handler-smis-all')
     archiveClassifier.set('')
 }
