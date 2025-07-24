@@ -5,3 +5,5 @@ include 'shared-core'
 //include 'app-main'
 include 'handler-mt-gmps'
 include 'abstract-handler-launcher'
+include 'handler-smis'
+
